@@ -2,7 +2,6 @@
     height: 460px;
     object-fit: contain;
 }
-
 .marca {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -11,12 +10,10 @@
   font-variation-settings:
     "wdth" 100;
 }
-
 .marca a{
   text-decoration: none;
   color: white;
 }
-
 .productos{
   margin: 20px;
 }
