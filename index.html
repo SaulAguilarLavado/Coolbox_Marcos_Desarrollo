@@ -129,43 +129,7 @@
   <main class="p-5">
     <h4 class="text-center text-danger">Mira los diferentes productos que tenemos para ti!</h4>
     <div class="card text-center">
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs d-flex justify-content-center" id="myTab" role="tablist">
-          <!--Nav de las Cards-->
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-danger active" id="audio-tab" data-bs-toggle="tab" data-bs-target="#audio" type="button" role="tab">Audio</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="camara-tab" data-bs-toggle="tab" data-bs-target="#camara" type="button" role="tab">Camaras y Drones</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="celulares-tab" data-bs-toggle="tab" data-bs-target="#celulares" type="button" role="tab">Celulares y Accesorios</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="computo-tab" data-bs-toggle="tab" data-bs-target="#computo" type="button" role="tab">Computo</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="gamer-tab" data-bs-toggle="tab" data-bs-target="#gamer" type="button" role="tab">Gamer</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="movilidad-tab" data-bs-toggle="tab" data-bs-target="#movilidad" type="button" role="tab">Movilidad</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="oficina-tab" data-bs-toggle="tab" data-bs-target="#oficina" type="button" role="tab">Oficina</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="cargadores-tab" data-bs-toggle="tab" data-bs-target="#cargadores" type="button" role="tab">Pilas y Cargadores</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="smart-tab" data-bs-toggle="tab" data-bs-target="#smart" type="button" role="tab">SmartHome</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link text-black" id="tv-tab" data-bs-toggle="tab" data-bs-target="#tv" type="button" role="tab">TV y Video</button>
-        </ul>
-      </div>
-
-      <!--Lo que se va mostrar-->
-      <div class="card-body tab-content" id="myTabContent">
+      <div class="card-body  tab-content">
         <!--Audio-->
         <div class="tab-pane active" id="audio" role="tabpanel">
           <div class="productos row justify-content-center">
@@ -787,15 +751,52 @@
             <li><a href="#" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
             <li><a href="#" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
             <li><a href="#" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
-            <li><a href="#" class="text-white text-decoration-none d-block mb-1"></a>Sugerencias</a>
+          </ul>
+          <br>
+          <h5 class="text-uppercase">Formularios</h5>
+          <ul class="list-unstyled sm">
+            <li><a href="#" class="text-white text-decoration-none d-block mb-1">
+              <i class="bi bi-chat-left-dots-fill fs-1"></i><br>
+              Sugerencias</a>
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </li>
             <li><a href="#" class="text-white text-decoration-none d-block mb-1">
                 <i class="bi bi-book-fill fs-1"></i><br>
                 Reclamaciones</a>
+                <form>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </li>
           </ul>
         </div>
-    
       </div>
     </div>
   </footer>
