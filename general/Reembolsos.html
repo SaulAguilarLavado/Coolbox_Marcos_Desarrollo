@@ -13,13 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <!--Estilo de la Pagina-->
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
-  <div id="videoModal" class="video-modal">
-    <video id="introVideo" src="img/carrusel-img/videoCoolbox.mp4" autoplay muted></video>
-  </div>
-
   <header>
     <div class="bg-dark text-white p-3">
       <div class="d-flex justify-content-between align-items-center">
@@ -27,8 +23,8 @@
         <div style="width: 100px;"></div>
   
         <div class="marca text-center flex-grow-1">
-          <a href="index.html">
-            <strong style="font-size: 2.5rem;"><img src="img/logoCoolbox.png"  width="70" height="70" alt="">Coolbox</strong>
+          <a href="../index.html">
+            <strong style="font-size: 2.5rem;"><img src="../img/logoCoolbox.png"  width="70" height="70" alt="">Coolbox</strong>
           </a>
         </div>
         <div>
@@ -96,12 +92,10 @@
       </div>
     </div>
   </header>
-
-  <!-- Navbar -->
   <div class="principal">
     <nav class="navbar navbar-expand-md navbar-expand-sm navbar-expand-lg bg-body-tertiary">
         <div class="container">
-          <a class="navbar-brand" href="index.html">Coolbox</a>
+          <a class="navbar-brand" href="../index.html">Coolbox</a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -135,149 +129,68 @@
           </div>
         </div>
     </nav>
-    <div class="carousel contenedor-carrusel p-3">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="3000">
-            <img src="img/carrusel-img/general7.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general2.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general3.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general6.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general4.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general5.png" class="d-block w-100" alt="...">
-          </div>
-    
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
   </div>
+  <main class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+            <section class="bg-white p-4 p-md-5 rounded shadow-sm">
+                <h2 class="text-center fw-bold mb-4">Cambios y Devoluciones</h2>
 
+                <p>
+                    Para cualquier cambio o devolución de mercadería, el cliente deberá presentar obligatoriamente el comprobante de pago (artículo 1° del Reglamento de Comprobantes de Pago). Se sugiere brindar su correo electrónico al momento de realizar la compra para facilitar el envío de una copia de su boleta de venta electrónica, en caso de que la requiera.
+                </p>
 
-  <h4 class="text-center py-4">Mira las diferentes Categorias que tenemos para ti!</h4>
-  <!-- Cards -->
-  <main class="p-2">
-    <section class="mb-5">
-      <div class="card text-center border-0">
-        <div class="card-body tab-content">
-          <div class="productos row justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Audio.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Audio</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Celulares.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Celulares</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Computo.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Computo</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Fotografia.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Fotografia</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Gamer.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Gamer</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Movilidad.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Movilidad</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Oficina.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Oficina</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Audio.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Pilas</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Smart-Home.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">SmartHome</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Tv.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">TV</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-          </div>
+                <h3 class="mt-4">Plazo para Cambios o Devoluciones</h3>
+                <p>
+                    Todo cambio o devolución debe realizarse dentro de los <strong>15 días calendario</strong>strong> desde la emisión del comprobante de pago para compras en tiendas físicas. Para compras realizadas a través de canales de venta online, este plazo se contabiliza desde la fecha de entrega del pedido. Los productos deben encontrarse <strong>operativos, sellados y sin señales de uso</strong>strong>, junto con sus accesorios y empaques, que deben estar completos según lo especificado en el manual. Para productos en promoción, se requiere la entrega de todos los productos incluidos en la promoción correspondiente.
+                </p>
+
+                <h3 class="mt-4">Proceso para Cambios o Devoluciones</h3>
+                <p>
+                    Para todo cambio o devolución de compras realizadas en nuestras tiendas físicas y productos adquiridos a través de nuestros canales de venta online, el cliente deberá acercarse a cualquiera de nuestras tiendas. Allí se comprobará el estado del producto para verificar si cumple con nuestras políticas de cambios o devoluciones. Posteriormente, se emitirá una nota de crédito, que es de uso exclusivo en nuestras tiendas físicas y no será válida para nuestros canales de venta online. Todos los cambios de producto están sujetos a disponibilidad y stock en tienda.
+                </p>
+
+                <h3 class="mt-4">Política para Vehículos y Accesorios de Movilidad Personal (VMP)</h3>
+                <p>
+                    Los vehículos y accesorios de movilidad personal (scooters y bicicletas) con motor eléctrico cuentan con su propia política de cambios y/o devoluciones. Para más detalles, ingrese a nuestra <strong><a href="Politicas.html" target="_blank" class="text-danger fw-medium"">Política de Servicio al Cliente Urban Rider</a></strong>.
+                </p>
+
+                <h3 class="mt-4">Nota de Crédito</h3>
+                <p>
+                    La nota de crédito por cambio de producto deberá aplicarse en su totalidad en cualquiera de nuestras tiendas a nivel nacional. La nota de crédito es personal e intransferible y no es canjeable por dinero. Además, debe presentarse el documento impreso al momento de su aplicación, junto con el DNI del adquirente. Solo se puede aplicar una nota de crédito por transacción, y estas notas tienen una vigencia de <strong>1 año</strong>.
+                </p>
+
+                <h3 class="mt-4">Devolución de Dinero</h3>
+                <p>En caso el cliente requiera la devolución de su dinero:</p>
+                <ol class="ms-3">
+                    <li class="mb-2">
+                        La nota de crédito por cambio de producto deberá aplicarse en su totalidad en cualquiera de nuestras tiendas a nivel nacional. La nota de crédito es personal e intransferible y no es canjeable por dinero. Además, debe presentarse el documento impreso al momento de su aplicación, junto con el DNI del adquirente. Solo se puede aplicar una nota de crédito por transacción, y estas notas tienen una vigencia de <strong>1 año</strong>.
+                    </li>
+                    <li>
+                        Para compras realizadas en cualquiera de nuestros canales de venta online mediante tarjeta de crédito y/o débito, se realizará un extorno de acuerdo a los plazos de atención de su banco (aproximadamente <strong>30 días calendario</strong>). Si la compra se realizó con Pago Efectivo, la devolución de dinero se llevará a cabo mediante transferencia bancaria, siguiendo las indicaciones descritas en el literal anterior.
+                    </li>
+                </ol>
+
+                <h3 class="mt-4">Productos No Cambiables</h3>
+                <p>
+                    Los productos en liquidación/remate, reacondicionados, reempacados, videojuegos y productos de cuidado personal que entren en contacto directo con la piel y/o cabello (como audífonos, afeitadoras, secadoras, alisadoras, depiladoras, rasuradoras, cascos, guantes, mangos, pedales y asientos de bicicleta y/o scooters eléctricos), así como equipos de gimnasio (trotadoras, bicicletas estacionarias, elípticas y similares), no podrán ser cambiados ni devueltos, y solo aplicará la garantía correspondiente, si la tuviesen.
+                </p>
+
+                <h3 class="mt-4">Servicios de Instalación</h3>
+                <p>
+                    Los servicios de instalación, configuración y armado a domicilio no podrán ser cambiados ni devueltos, y solo se aplicará la garantía correspondiente. Los trabajos y materiales extras (como instalación de toma y/o enchufe eléctrico, cableado, canaletas, modificaciones en paredes, pisos, etc.) no están incluidos en la compra del servicio principal, por lo que tendrán un costo adicional si son solicitados por el cliente. Consulte con el proveedor de servicios la factibilidad del trabajo extra, tarifas y políticas de garantía.
+                </p>
+
+                <h3 class="mt-4">Marketplace</h3>
+                <p>
+                    Los servicios de instalación, configuración y armado a domicilio no podrán ser cambiados ni devueltos, y solo se aplicará la garantía correspondiente. Los trabajos y materiales extras (como instalación de toma y/o enchufe eléctrico, cableado, canaletas, modificaciones en paredes, pisos, etc.) no están incluidos en la compra del servicio principal, por lo que tendrán un costo adicional si son solicitados por el cliente. Consulte con el proveedor de servicios la factibilidad del trabajo extra, tarifas y políticas de garantía.
+                </p>
+            </section>
         </div>
-      </div>
-    </section>
+    </div>
   </main>
+
+
 
   <!-- Footer -->
   <footer class="info-general text-white p-4 text-center fs-6">
@@ -304,10 +217,10 @@
         <div class="col-lg-3 mx-auto">
           <h5 class="text-uppercase text-center fw-bold">Información</h5>
           <ul class="list-unstyled sm text-center">
-            <li><a href="general/Acerca.html" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
-            <li><a href="general/Politicas.html" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
-            <li><a href="general/Terminos.html" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
-            <li><a href="general/Reembolsos.html" class="text-white text-decoration-none d-block mb-1">Reembolsos y Devoluciones</a></li>
+            <li><a href="Acerca.html" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
+            <li><a href="Politicas.html" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
+            <li><a href="Terminos.html" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
+            <li><a href="Reembolsos.html" class="text-white text-decoration-none d-block mb-1">Reembolsos y Devoluciones</a></li>
           </ul>
         </div>
   
@@ -317,12 +230,12 @@
           <ul class="list-unstyled sm">
             <!-- Sugerencias -->
             <li class="fs-6">
-              <a href="general/Sugerencias.html" class="text-white text-decoration-none d-block mb-1 text-center">
+              <a href="Sugerencias.html" class="text-white text-decoration-none d-block mb-1 text-center">
                 Sugerencias <i class="bi bi-chat-left-dots-fill"></i>
               </a>
             <!-- Reclamaciones -->
             <li class="fs-6">
-              <a href="general/Reclamaciones.html" class="text-white text-decoration-none d-block mb-1 text-center">
+              <a href="Reclamaciones.html" class="text-white text-decoration-none d-block mb-1 text-center">
                 Reclamaciones <i class="bi bi-book-fill"></i>
               </a>
             </li>
@@ -338,16 +251,6 @@
       <p class="mb-0">© 2025 Coolbox. Proyecto Marcos de Desarrollo Web</p>
     </div>  
   </footer>
-  <script>
-  const modal = document.getElementById("videoModal");
-  const video = document.getElementById("introVideo");
-
-  video.addEventListener("ended", () => {
-    modal.classList.add("hidden");
-  });
-</script>
-
-
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
