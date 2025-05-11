@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CoolboxApplication<coolbox>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.coolbox.CoolboxApplication",
+            "projectName": "coolbox",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
