@@ -4,6 +4,7 @@ public class SuggestionForm {
     private String name;
     private String email;
     private String suggestion;
+    private String categoria; // Nueva propiedad
 
     // Getters y setters
     public String getName() {
@@ -28,5 +29,13 @@ public class SuggestionForm {
 
     public void setSuggestion(String suggestion) {
         this.suggestion = suggestion;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

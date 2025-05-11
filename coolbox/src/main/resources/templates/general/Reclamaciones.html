@@ -111,16 +111,16 @@
                   Menu
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" th:href="@{/productos/audio}">Audio</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/celulares}">Celulares y accesorios</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/computo}">Computo</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/fotografia}">Fotografia</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/gaming}">Gaming</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/movilidad}">Movilidad</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/tv}">TV y video</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/pilas}">Pilas y cargadores</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/oficina}">Oficina</a></li>
-                  <li><a class="dropdown-item" th:href="@{/productos/smartHome}">Smart Home</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/audio}">Audio</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/celulares}">Celulares y accesorios</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/computo}">Computo</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/fotografia}">Fotografia</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/gaming}">Gaming</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/movilidad}">Movilidad</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/tv}">TV y video</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/pilas}">Pilas y cargadores</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/oficina}">Oficina</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/smartHome}">Smart Home</a></li>
                 </ul>
               </li>
             </ul>
@@ -136,41 +136,41 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 col-xl-6">
             <section class="bg-light p-4 p-md-5 rounded shadow-sm">
-                <form th:action="@{/general/reclamaciones}" method="post">
-                    <h2 class="text-center mb-4 text-dark">Formulario de Reclamaciones</h2>
-    
-                    <div class="mb-3">
-                        <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" required>
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="dni" class="form-label">DNI:</label>
-                        <input type="text" id="dni" name="dni" class="form-control" required>
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="categoria" class="form-label">Categoría de la Reclamación:</label>
-                        <select id="categoria" name="categoria" class="form-select" required>
-                            <option value="" disabled selected>Selecciona una categoría</option>
-                            <option value="producto">Producto</option>
-                            <option value="servicio">Servicio</option>
-                            <option value="soporte">Soporte Técnico</option>
-                            <option value="otro">Otro</option>
-                        </select>
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="reclamacion" class="form-label">Descripción de la Reclamación:</label>
-                        <textarea id="reclamacion" name="reclamacion" rows="4" class="form-control" required></textarea>
-                    </div>
-    
-                    <div class="d-grid">
-                        <button type="submit" class="btn text-white" style="background-color: #ff3300;">Enviar
-                            Reclamación</button>
-                    </div>
-                </form>
-                <p th:text="${message}" class="text-success mt-3"></p>
+              <form th:action="@{/general/reclamaciones}" th:object="${complaintForm}" method="post">
+                <h2 class="text-center mb-4 text-dark" th:text="#{formulario.reclamaciones}"></h2>
+            
+                <div class="mb-3">
+                  <label for="nombre" class="form-label" th:text="#{formulario.nombre}"></label>
+                  <input type="text" id="nombre" th:field="*{name}" class="form-control" required>
+                </div>
+            
+                <div class="mb-3">
+                  <label for="dni" class="form-label" th:text="#{formulario.dni}"></label>
+                  <input type="text" id="dni" th:field="*{dni}" class="form-control" required>
+                </div>
+            
+                <div class="mb-3">
+                  <label for="categoria" class="form-label" th:text="#{formulario.categoria}"></label>
+                  <select id="categoria" th:field="*{categoria}" class="form-select" required>
+                    <option value="" disabled selected th:text="#{formulario.categoria}"></option>
+                    <option value="producto" th:text="#{categoria.producto}"></option>
+                    <option value="servicio" th:text="#{categoria.servicio}"></option>
+                    <option value="soporte" th:text="#{categoria.soporte}"></option>
+                    <option value="otro" th:text="#{categoria.otro}"></option>
+                  </select>
+                </div>
+            
+                <div class="mb-3">
+                  <label for="reclamacion" class="form-label" th:text="#{formulario.descripcion}"></label>
+                  <textarea id="reclamacion" th:field="*{complaint}" rows="4" class="form-control" required></textarea>
+                </div>
+            
+                <div class="d-grid">
+                  <button type="submit" class="btn text-white" style="background-color: #ff3300;"
+                    th:text="#{formulario.enviar}"></button>
+                </div>
+              </form>
+              <p th:text="${message}" class="text-success mt-3"></p>
             </section>
         </div>
     </div>

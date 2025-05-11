@@ -33,6 +33,7 @@ public class FormController {
     @PostMapping("/general/reclamaciones")
     public String procesarReclamaciones(ComplaintForm complaintForm, Model model) {
         model.addAttribute("message", "Tu reclamación ha sido enviada.");
+        model.addAttribute("complaintForm", new ComplaintForm()); // Limpia los campos del formulario
         return "general/Reclamaciones"; // Carga templates/general/Reclamaciones.html
     }
 }
