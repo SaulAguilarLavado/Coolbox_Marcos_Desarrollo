@@ -13,13 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <!--Estilo de la Pagina-->
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
-  <div id="videoModal" class="video-modal">
-    <video id="introVideo" src="img/carrusel-img/videoCoolbox.mp4" autoplay muted></video>
-  </div>
-
   <header>
     <div class="bg-dark text-white p-3">
       <div class="d-flex justify-content-between align-items-center">
@@ -27,8 +23,8 @@
         <div style="width: 100px;"></div>
   
         <div class="marca text-center flex-grow-1">
-          <a href="index.html">
-            <strong style="font-size: 2.5rem;"><img src="img/logoCoolbox.png"  width="70" height="70" alt="">Coolbox</strong>
+          <a href="../index.html">
+            <strong style="font-size: 2.5rem;"><img src="../img/logoCoolbox.png"  width="70" height="70" alt="">Coolbox</strong>
           </a>
         </div>
         <div>
@@ -96,12 +92,10 @@
       </div>
     </div>
   </header>
-
-  <!-- Navbar -->
   <div class="principal">
     <nav class="navbar navbar-expand-md navbar-expand-sm navbar-expand-lg bg-body-tertiary">
         <div class="container">
-          <a class="navbar-brand" href="index.html">Coolbox</a>
+          <a class="navbar-brand" href="../index.html">Coolbox</a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -135,149 +129,47 @@
           </div>
         </div>
     </nav>
-    <div class="carousel contenedor-carrusel p-3">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="3000">
-            <img src="img/carrusel-img/general7.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general2.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general3.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general6.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general4.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general5.png" class="d-block w-100" alt="...">
-          </div>
-    
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
   </div>
-
-
-  <h4 class="text-center py-4">Mira las diferentes Categorias que tenemos para ti!</h4>
-  <!-- Cards -->
-  <main class="p-2">
-    <section class="mb-5">
-      <div class="card text-center border-0">
-        <div class="card-body tab-content">
-          <div class="productos row justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Audio.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Audio</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Celulares.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Celulares</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Computo.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Computo</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Fotografia.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Fotografia</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Gamer.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Gamer</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Movilidad.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Movilidad</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Oficina.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Oficina</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Audio.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Pilas</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Smart-Home.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">SmartHome</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Tv.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">TV</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-          </div>
+  <main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+          <section class="Descripcion bg-white rounded shadow p-4 mx-auto">
+            <h2 class="text-center text-dark fw-bold mb-4 fs-2">En Coolbox, lo mejor en tecnología al mejor precio</h>
+        
+            <p class="text-justify fs-6 mb-4">
+              Nos preocupamos por ofrecerte los mejores productos tecnológicos a los mejores precios. Explora nuestro amplio catálogo y encuentra todo lo que necesitas para el trabajo, estudios, entretenimiento y comodidad.
+            </p>
+        
+            <h3 class="text-danger fs-4 fw-semibold mt-4 mb-2">Productos destacados</h3>
+            <p class="text-justify fs-6 mb-3">
+              Tenemos las últimas novedades en artículos de audio, video, sistemas de seguridad, mundo gamer, computadoras y dispositivos smart. En nuestra web encontrarás los mejores modelos de smartphones, audífonos, televisores, laptops, tablets, smartwatches, tabletas gráficas, impresoras, drones, juguetes, cuidado personal y mucho más.
+            </p>
+            <p class="text-justify fs-6 mb-3">
+              También contamos con una amplia gama de accesorios, suministros y complementos de la mejor calidad.
+            </p>
+        
+            <h3 class="text-danger fs-4 fw-semibold mt-4 mb-2">Smart home</h3>
+            <p class="text-justify fs-6 mb-3">
+              Convierte tu casa en un hogar inteligente con nuestros parlantes e iluminación smart. Ofrecemos aspiradoras robot, interruptores smart, pantallas y portarretratos inteligentes, entre otros dispositivos que te ayudarán a renovar tu hogar.
+            </p>
+        
+            <h3 class="text-danger fs-4 fw-semibold mt-4 mb-2">Marcas reconocidas y marketplace</h3>
+            <p class="text-justify fs-6 mb-3">
+              Ponemos a tu disposición una gran variedad de productos de marcas reconocidas. Además, nuestro marketplace te ofrece nuevos productos, disponibles con solo un clic.
+            </p>
+        
+            <h3 class="text-danger fs-4 fw-semibold mt-4 mb-2">Compra fácil y segura</h3>
+            <p class="text-justify fs-6 mb-3">
+              Compra de manera sencilla y segura a través de nuestra web. Recibe tus productos en la comodidad de tu hogar o retíralos en tienda sin costo adicional.
+            </p>
+            <p class="text-justify fs-6">
+              Añade lo que necesitas a tu carrito y sigue las indicaciones para una compra rápida y cómoda. ¡Somos especialistas en tecnología y electrónica!
+            </p>
+          </section>
         </div>
-      </div>
-    </section>
-  </main>
+    </div>
+    
+</main>
 
   <!-- Footer -->
   <footer class="info-general text-white p-4 text-center fs-6">
@@ -304,10 +196,10 @@
         <div class="col-lg-3 mx-auto">
           <h5 class="text-uppercase text-center fw-bold">Información</h5>
           <ul class="list-unstyled sm text-center">
-            <li><a href="general/Acerca.html" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
-            <li><a href="general/Politicas.html" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
-            <li><a href="general/Terminos.html" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
-            <li><a href="general/Reembolsos.html" class="text-white text-decoration-none d-block mb-1">Reembolsos y Devoluciones</a></li>
+            <li><a href="Acerca.html" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
+            <li><a href="Politicas.html" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
+            <li><a href="Terminos.html" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
+            <li><a href="Reembolsos.html" class="text-white text-decoration-none d-block mb-1">Reembolsos y Devoluciones</a></li>
           </ul>
         </div>
   
@@ -317,12 +209,12 @@
           <ul class="list-unstyled sm">
             <!-- Sugerencias -->
             <li class="fs-6">
-              <a href="general/Sugerencias.html" class="text-white text-decoration-none d-block mb-1 text-center">
+              <a href="Sugerencias.html" class="text-white text-decoration-none d-block mb-1 text-center">
                 Sugerencias <i class="bi bi-chat-left-dots-fill"></i>
               </a>
             <!-- Reclamaciones -->
             <li class="fs-6">
-              <a href="general/Reclamaciones.html" class="text-white text-decoration-none d-block mb-1 text-center">
+              <a href="Reclamaciones.html" class="text-white text-decoration-none d-block mb-1 text-center">
                 Reclamaciones <i class="bi bi-book-fill"></i>
               </a>
             </li>
@@ -338,16 +230,6 @@
       <p class="mb-0">© 2025 Coolbox. Proyecto Marcos de Desarrollo Web</p>
     </div>  
   </footer>
-  <script>
-  const modal = document.getElementById("videoModal");
-  const video = document.getElementById("introVideo");
-
-  video.addEventListener("ended", () => {
-    modal.classList.add("hidden");
-  });
-</script>
-
-
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>

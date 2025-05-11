@@ -13,13 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <!--Estilo de la Pagina-->
-    <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
-  <div id="videoModal" class="video-modal">
-    <video id="introVideo" src="img/carrusel-img/videoCoolbox.mp4" autoplay muted></video>
-  </div>
-
   <header>
     <div class="bg-dark text-white p-3">
       <div class="d-flex justify-content-between align-items-center">
@@ -27,8 +23,8 @@
         <div style="width: 100px;"></div>
   
         <div class="marca text-center flex-grow-1">
-          <a href="index.html">
-            <strong style="font-size: 2.5rem;"><img src="img/logoCoolbox.png"  width="70" height="70" alt="">Coolbox</strong>
+          <a href="../index.html">
+            <strong style="font-size: 2.5rem;"><img src="../img/logoCoolbox.png"  width="70" height="70" alt="">Coolbox</strong>
           </a>
         </div>
         <div>
@@ -96,12 +92,10 @@
       </div>
     </div>
   </header>
-
-  <!-- Navbar -->
   <div class="principal">
     <nav class="navbar navbar-expand-md navbar-expand-sm navbar-expand-lg bg-body-tertiary">
         <div class="container">
-          <a class="navbar-brand" href="index.html">Coolbox</a>
+          <a class="navbar-brand" href="../index.html">Coolbox</a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -135,149 +129,60 @@
           </div>
         </div>
     </nav>
-    <div class="carousel contenedor-carrusel p-3">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="3000">
-            <img src="img/carrusel-img/general7.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general2.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general3.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general6.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general4.png" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="img/carrusel-img/general5.png" class="d-block w-100" alt="...">
-          </div>
-    
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
   </div>
+  <main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+            <section class="bg-white p-4 p-md-5 rounded shadow-sm">
+                <h2 class="text-center fw-bold mb-4">Política de Privacidad de COOLBOX</h2>
 
+                <p class="text-justify">
+                    Por medio del presente documento, Rash Perú S.R.L. (en adelante, “COOLBOX”), domiciliada en Av. Salaverry N° 3310, Magdalena del Mar, Lima - Perú, pone a disposición de los usuarios su Política de Privacidad, en conformidad con la normativa vigente sobre protección de Datos Personales (Ley N° 29733 y Decreto Supremo 003-2013-JUS). A continuación, se detallan las finalidades de tratamiento de la información proporcionada, los encargados de su tratamiento, el tiempo de almacenamiento, medidas de seguridad y medios para ejercer los derechos del titular de los datos personales.
+                </p>
 
-  <h4 class="text-center py-4">Mira las diferentes Categorias que tenemos para ti!</h4>
-  <!-- Cards -->
-  <main class="p-2">
-    <section class="mb-5">
-      <div class="card text-center border-0">
-        <div class="card-body tab-content">
-          <div class="productos row justify-content-center">
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Audio.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Audio</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Celulares.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Celulares</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Computo.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Computo</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Fotografia.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Fotografia</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Gamer.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Gamer</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Movilidad.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Movilidad</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Oficina.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Oficina</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Audio.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">Pilas</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Smart-Home.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">SmartHome</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-2 mb-4">
-              <div class="card h-100 border-0 shadow-sm text-center">
-                <img src="img/index_img/Tv.jpeg" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                  <h6 class="card-title fw-bold">TV</h6>
-                  <a href="#" class="btn btn-outline-danger btn-sm">Ver todo</a>
-                </div>
-              </div>
-            </div>
-          </div>
+                <h3 class="text-danger fw-semibold mt-4">1. ¿Cómo protegemos su información?</h3>
+                <p class="text-justify">
+                    COOLBOX ha adoptado todas las medidas técnicas, legales y organizacionales necesarias para garantizar la seguridad y el correcto procesamiento de sus datos personales, evitando manipulaciones indebidas, pérdidas accidentales, destrucción o accesos no autorizados. Le informamos que su información no será comercializada, transferida ni compartida sin su autorización, y solo será utilizada para los fines detallados a continuación.
+                </p>
+
+                <h3 class="text-danger fw-semibold mt-4">2. ¿Cómo almacenamos y para qué utilizamos su información?</h3>
+                <p class="text-justify">
+                    COOLBOX recopila datos personales a través de su sitio web, formularios físicos, encuestas en tiendas, y fuentes de acceso público y privado. A continuación, se detallan las características de cada procesamiento de información:
+                </p>
+                <ul class="ps-3">
+                    <li class="mb-2"><strong>Crear Cuenta y Envío y Pago:</strong> Los datos personales se almacenarán en el banco de datos “Clientes” (Código N° 2849). Finalidades: procesar compras, comunicar condiciones relacionadas a la relación contractual, verificar información para entrega de productos, realizar acciones de cobranza, fines estadísticos e históricos, y enviar promociones (previa autorización expresa).</li>
+                    <li class="mb-2"><strong>Suscríbete:</strong> Los datos personales se almacenarán en el banco de datos “Usuarios Web” (Código N° 2848). Finalidades: enviar promociones, concursos, ofertas y realizar acciones de perfilamiento (previa autorización expresa).</li>
+                    <li class="mb-2"><strong>Libro de Reclamaciones:</strong> Los datos se almacenarán en “Clientes” (Código N° 2849). Finalidades: atender consultas, quejas y reclamos; llevar un registro para cumplir con normas de protección al consumidor.
+                    </li>
+                    <li class="mb-2"><strong>Encuesta Cool:</strong> Los datos se almacenarán en “Clientes” (Código N° 2849). Finalidades: fines estadísticos e históricos, atender consultas y enviar promociones (previa autorización expresa).</li>
+                </ul>
+
+                <h3 class="text-danger fw-semibold mt-4">3. ¿Por cuánto tiempo almacenamos la información?</h3>
+                <p class="text-justify">
+                    El plazo de almacenamiento en todos los bancos de datos es indeterminado o hasta que el titular de los datos ejerza sus derechos según la normativa de protección de datos personales.
+                </p>
+
+                <h3 class="text-danger fw-semibold mt-4">4. ¿Quién tiene acceso a su información?</h3>
+                <p class="text-justify">
+                    Usted nos autoriza a compartir su información personal con terceros que nos brindan servicios para mejorar nuestras actividades, siempre garantizando que el tratamiento de sus datos se limite a las finalidades autorizadas, manteniendo la confidencialidad y seguridad.
+                </p>
+
+                <h3 class="text-danger fw-semibold mt-4">5. ¿Cómo puede ejercer sus derechos como titular de datos personales?</h3>
+                <p class="text-justify">
+                    COOLBOX garantiza el ejercicio de los derechos de acceso, rectificación, cancelación, oposición, información o revocación que le asisten. Para ejercer estos derechos, puede enviar una solicitud al correo <a href="mailto:datospersonales@rashperu.com" class="text-danger fw-medium">datospersonales@rashperu.com</a> con el asunto “Derechos Datos Personales”. Si no recibe respuesta, puede presentar una reclamación ante la Autoridad Nacional de Protección de Datos Personales.
+                    <br>
+                    Correo: <a href="mailto:datospersonales@rashperu.com" class="text-danger fw-medium">datospersonales@rashperu.com</a>
+                </p>
+
+                <h3 class="text-danger fw-semibold mt-4">6. Actualizaciones de la presente política de privacidad</h3>
+                <p class="text-justify">
+                    COOLBOX podrá realizar correcciones y actualizaciones a esta Política de Privacidad. Verifique estos términos regularmente para consultar los cambios que puedan haber existido y cómo le afectan.
+                </p>
+            </section>
         </div>
-      </div>
-    </section>
-  </main>
+    </div>
+</main>
+
 
   <!-- Footer -->
   <footer class="info-general text-white p-4 text-center fs-6">
@@ -304,10 +209,10 @@
         <div class="col-lg-3 mx-auto">
           <h5 class="text-uppercase text-center fw-bold">Información</h5>
           <ul class="list-unstyled sm text-center">
-            <li><a href="general/Acerca.html" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
-            <li><a href="general/Politicas.html" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
-            <li><a href="general/Terminos.html" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
-            <li><a href="general/Reembolsos.html" class="text-white text-decoration-none d-block mb-1">Reembolsos y Devoluciones</a></li>
+            <li><a href="Acerca.html" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
+            <li><a href="Politicas.html" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
+            <li><a href="Terminos.html" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
+            <li><a href="Reembolsos.html" class="text-white text-decoration-none d-block mb-1">Reembolsos y Devoluciones</a></li>
           </ul>
         </div>
   
@@ -317,12 +222,12 @@
           <ul class="list-unstyled sm">
             <!-- Sugerencias -->
             <li class="fs-6">
-              <a href="general/Sugerencias.html" class="text-white text-decoration-none d-block mb-1 text-center">
+              <a href="Sugerencias.html" class="text-white text-decoration-none d-block mb-1 text-center">
                 Sugerencias <i class="bi bi-chat-left-dots-fill"></i>
               </a>
             <!-- Reclamaciones -->
             <li class="fs-6">
-              <a href="general/Reclamaciones.html" class="text-white text-decoration-none d-block mb-1 text-center">
+              <a href="Reclamaciones.html" class="text-white text-decoration-none d-block mb-1 text-center">
                 Reclamaciones <i class="bi bi-book-fill"></i>
               </a>
             </li>
@@ -338,16 +243,6 @@
       <p class="mb-0">© 2025 Coolbox. Proyecto Marcos de Desarrollo Web</p>
     </div>  
   </footer>
-  <script>
-  const modal = document.getElementById("videoModal");
-  const video = document.getElementById("introVideo");
-
-  video.addEventListener("ended", () => {
-    modal.classList.add("hidden");
-  });
-</script>
-
-
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
