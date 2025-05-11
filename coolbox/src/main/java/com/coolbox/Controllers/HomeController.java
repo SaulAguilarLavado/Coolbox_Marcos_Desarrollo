@@ -11,54 +11,54 @@ public class HomeController {
         return "index"; // Carga templates/index.html
     }
 
-    @GetMapping("/productos/audio")
+    @GetMapping("/categorias/audio")
     public String audio() {
-        return "productos/audio"; // Carga templates/productos/audio.html
+        return "categorias/audio"; // Carga templates/categorias/audio.html
     }
 
-    @GetMapping("/productos/celulares")
+    @GetMapping("/categorias/celulares")
     public String celulares() {
-        return "productos/celulares"; // Carga templates/productos/celulares.html
+        return "categorias/celulares"; // Carga templates/categorias/celulares.html
     }
 
-    @GetMapping("/productos/computo")
+    @GetMapping("/categorias/computo")
     public String computo() {
-        return "productos/computo"; // Carga templates/productos/computo.html
+        return "categorias/computo"; // Carga templates/categorias/computo.html
     }
 
-    @GetMapping("/productos/fotografia")
+    @GetMapping("/categorias/fotografia")
     public String fotografia() {
-        return "productos/fotografia"; // Carga templates/productos/fotografia.html
+        return "categorias/fotografia"; // Carga templates/categorias/fotografia.html
     }
 
-    @GetMapping("/productos/gaming")
+    @GetMapping("/categorias/gaming")
     public String gaming() {
-        return "productos/gaming"; // Carga templates/productos/gaming.html
+        return "categorias/gaming"; // Carga templates/categorias/gaming.html
     }
 
-    @GetMapping("/productos/movilidad")
+    @GetMapping("/categorias/movilidad")
     public String movilidad() {
-        return "productos/movilidad"; // Carga templates/productos/movilidad.html
+        return "categorias/movilidad"; // Carga templates/categorias/movilidad.html
     }
 
-    @GetMapping("/productos/tv")
+    @GetMapping("/categorias/tv")
     public String tv() {
-        return "productos/tv"; // Carga templates/productos/tv.html
+        return "categorias/tv"; // Carga templates/categorias/tv.html
     }
 
-    @GetMapping("/productos/pilas")
+    @GetMapping("/categorias/pilas")
     public String pilas() {
-        return "productos/pilas"; // Carga templates/productos/pilas.html
+        return "categorias/pilas"; // Carga templates/categorias/pilas.html
     }
 
-    @GetMapping("/productos/oficina")
+    @GetMapping("/categorias/oficina")
     public String oficina() {
-        return "productos/oficina"; // Carga templates/productos/oficina.html
+        return "categorias/oficina"; // Carga templates/categorias/oficina.html
     }
 
-    @GetMapping("/productos/smartHome")
+    @GetMapping("/categorias/smartHome")
     public String smartHome() {
-        return "productos/smartHome"; // Carga templates/productos/smartHome.html
+        return "categorias/smartHome"; // Carga templates/categorias/smartHome.html
     }
 
     @GetMapping("/general/acerca")
