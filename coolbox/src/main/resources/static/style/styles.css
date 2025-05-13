@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+  overflow-x: hidden; 
+}
 .carousel-item img{
     height: 460px;
     object-fit: contain;
