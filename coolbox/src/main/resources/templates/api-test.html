@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Prueba de API REST</h1>
+        
+        <div class="row mt-4">
+            <!-- Sugerencias -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Sugerencias</h3>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary mb-3" onclick="probarGetAllSugerencias()">
+                            Obtener Todas las Sugerencias
+                        </button>
+                        
+                        <div class="mb-3">
+                            <label for="sugerenciaId" class="form-label">ID de Sugerencia</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="sugerenciaId" placeholder="Ingrese ID">
+                                <button class="btn btn-primary" onclick="probarGetSugerenciaById()">
+                                    Obtener Sugerencia
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Actualizar Sugerencia</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="updateSugerenciaId" class="form-label">ID</label>
+                                    <input type="number" class="form-control" id="updateSugerenciaId" placeholder="ID a actualizar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateSugerenciaName" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="updateSugerenciaName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateSugerenciaDni" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" id="updateSugerenciaDni">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateSugerenciaText" class="form-label">Sugerencia</label>
+                                    <textarea class="form-control" id="updateSugerenciaText" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateSugerenciaCategoria" class="form-label">Categoría</label>
+                                    <select class="form-select" id="updateSugerenciaCategoria">
+                                        <option value="producto">Producto</option>
+                                        <option value="servicio">Servicio</option>
+                                        <option value="soporte">Soporte</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-warning" onclick="probarUpdateSugerencia()">
+                                    Actualizar Sugerencia
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reclamaciones -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Reclamaciones</h3>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary mb-3" onclick="probarGetAllReclamaciones()">
+                            Obtener Todas las Reclamaciones
+                        </button>
+                        
+                        <div class="mb-3">
+                            <label for="reclamacionId" class="form-label">ID de Reclamación</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="reclamacionId" placeholder="Ingrese ID">
+                                <button class="btn btn-primary" onclick="probarGetReclamacionById()">
+                                    Obtener Reclamación
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Actualizar Reclamación</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="updateReclamacionId" class="form-label">ID</label>
+                                    <input type="number" class="form-control" id="updateReclamacionId" placeholder="ID a actualizar">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateReclamacionName" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="updateReclamacionName">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateReclamacionDni" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" id="updateReclamacionDni">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateReclamacionText" class="form-label">Reclamación</label>
+                                    <textarea class="form-control" id="updateReclamacionText" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="updateReclamacionCategoria" class="form-label">Categoría</label>
+                                    <select class="form-select" id="updateReclamacionCategoria">
+                                        <option value="producto">Producto</option>
+                                        <option value="servicio">Servicio</option>
+                                        <option value="soporte">Soporte</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-warning" onclick="probarUpdateReclamacion()">
+                                    Actualizar Reclamación
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Resultado</h3>
+                    </div>
+                    <div class="card-body">
+                        <pre id="resultado" class="bg-light p-3" style="min-height: 200px;"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/form-api.js}"></script>
+    <script>
+        function mostrarResultado(data) {
+            document.getElementById('resultado').textContent = 
+                JSON.stringify(data, null, 2);
+        }
+
+        // Funciones para Sugerencias
+        async function probarGetAllSugerencias() {
+            try {
+                const sugerencias = await getAllSugerencias();
+                mostrarResultado(sugerencias);
+            } catch (error) {
+                mostrarResultado({ error: error.message });
+            }
+        }
+
+        async function probarGetSugerenciaById() {
+            try {
+                const id = document.getElementById('sugerenciaId').value;
+                if (!id) {
+                    mostrarResultado({ error: "Por favor ingrese un ID" });
+                    return;
+                }
+                const sugerencia = await getSugerenciaById(id);
+                mostrarResultado(sugerencia);
+            } catch (error) {
+                mostrarResultado({ error: error.message });
+            }
+        }
+
+        async function probarUpdateSugerencia() {
+            try {
+                const id = document.getElementById('updateSugerenciaId').value;
+                if (!id) {
+                    mostrarResultado({ error: "Por favor ingrese un ID" });
+                    return;
+                }
+
+                const sugerenciaData = {
+                    name: document.getElementById('updateSugerenciaName').value,
+                    dni: document.getElementById('updateSugerenciaDni').value,
+                    suggestion: document.getElementById('updateSugerenciaText').value,
+                    categoria: document.getElementById('updateSugerenciaCategoria').value
+                };
+
+                const resultado = await updateSugerencia(id, sugerenciaData);
+                mostrarResultado(resultado);
+            } catch (error) {
+                mostrarResultado({ error: error.message });
+            }
+        }
+
+        // Funciones para Reclamaciones
+        async function probarGetAllReclamaciones() {
+            try {
+                const reclamaciones = await getAllReclamaciones();
+                mostrarResultado(reclamaciones);
+            } catch (error) {
+                mostrarResultado({ error: error.message });
+            }
+        }
+
+        async function probarGetReclamacionById() {
+            try {
+                const id = document.getElementById('reclamacionId').value;
+                if (!id) {
+                    mostrarResultado({ error: "Por favor ingrese un ID" });
+                    return;
+                }
+                const reclamacion = await getReclamacionById(id);
+                mostrarResultado(reclamacion);
+            } catch (error) {
+                mostrarResultado({ error: error.message });
+            }
+        }
+
+        async function probarUpdateReclamacion() {
+            try {
+                const id = document.getElementById('updateReclamacionId').value;
+                if (!id) {
+                    mostrarResultado({ error: "Por favor ingrese un ID" });
+                    return;
+                }
+
+                const reclamacionData = {
+                    name: document.getElementById('updateReclamacionName').value,
+                    dni: document.getElementById('updateReclamacionDni').value,
+                    complaint: document.getElementById('updateReclamacionText').value,
+                    categoria: document.getElementById('updateReclamacionCategoria').value
+                };
+
+                const resultado = await updateReclamacion(id, reclamacionData);
+                mostrarResultado(resultado);
+            } catch (error) {
+                mostrarResultado({ error: error.message });
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -80,4 +80,9 @@ public class HomeController {
     public String reembolsos() {
         return "general/reembolsos"; // Carga templates/general/reembolsos.html
     }
+
+    @GetMapping("/api-test")
+    public String apiTest() {
+        return "api-test";
+    }
 }

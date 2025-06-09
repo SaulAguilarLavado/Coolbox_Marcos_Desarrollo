@@ -17,81 +17,116 @@
 </head>
 <body>
   <header>
-    <div class="bg-dark text-white p-3">
-      <div class="d-flex justify-content-between align-items-center">
-        
-        <div style="width: 100px;"></div>
-  
-        <div class="marca text-center flex-grow-1">
-          <a th:href="@{/}">
-            <strong style="font-size: 2.5rem;">
-              <img th:src="@{/img/logoCoolbox.png}" width="70" height="70" alt="">Coolbox
-            </strong>
-          </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/img/logoCoolbox.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                Coolbox
+            </a>
+            <div class="d-flex align-items-center">
+                <!-- Mostrar nombre de usuario si está autenticado -->
+                <div th:if="${session.usuario}" class="me-3">
+                    <span class="text-white">Bienvenido, <span th:text="${session.usuario.nombre}"></span></span>
+                    <form action="/logout" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-outline-light btn-sm ms-2">Cerrar Sesión</button>
+                    </form>
+                </div>
+                
+                <!-- Botones de login/registro si no está autenticado -->
+                <div th:unless="${session.usuario}">
+                    <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signinModal">
+                        <i class="bi bi-arrow-bar-right"></i> Sign in
+                    </button>
+                </div>
+            </div>
         </div>
-        <div>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="bi bi-arrow-bar-right"></i>Sign in
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
+    </nav>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <form class="row g-3">
-                    <div class="col-md-4">
-                      <label for="validationDefault01" class="form-label">First name</label>
-                      <input type="text" class="form-control" id="validationDefault01" placeholder="Mark" required>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="validationDefault02" class="form-label">Last name</label>
-                      <input type="text" class="form-control" id="validationDefault02" placeholder="Otto" required>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="validationDefaultUsername" class="form-label">Username</label>
-                      <div class="input-group">
-                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                        <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="validationDefault03" class="form-label">Ciudad</label>
-                      <input type="text" class="form-control" id="validationDefault03" required>
-                    </div>
-                    <div class="col-md-3">
-                      <label for="validationDefault04" class="form-label">Distrito</label>
-                      <select class="form-select" id="validationDefault04" required>
-                        <option selected disabled value="">Choose...</option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="col-md-3">
-                      <label for="validationDefault05" class="form-label">Codigo Postal</label>
-                      <input type="text" class="form-control" id="validationDefault05" required>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                        <label class="form-check-label" for="invalidCheck2">
-                          Agree to terms and conditions
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-danger" type="submit">Sign in</button>
-                    </div>
-                  </form>
+                    <form action="/login" method="POST">
+                        <div class="mb-3">
+                            <label for="loginUsername" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="loginUsername" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Iniciar Sesión</button>
+                    </form>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signinModalLabel">Registro de Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/registro" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ciudad" class="form-label">Ciudad</label>
+                            <select class="form-select" id="ciudad" name="ciudad" required>
+                                <option value="">Seleccione una ciudad</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="distrito" class="form-label">Distrito</label>
+                            <select class="form-select" id="distrito" name="distrito" required>
+                                <option value="">Seleccione un distrito</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigoPostal" class="form-label">Código Postal</label>
+                            <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensajes de éxito/error -->
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <span th:text="${success}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   </header>
   <div class="principal">
@@ -229,8 +264,9 @@
       <p class="mb-0">© 2025 Coolbox. Proyecto Marcos de Desarrollo Web</p>
     </div>  
   </footer>
-
+  
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <script th:src="@{/js/ubicacion.js}"></script>
 </body>
 </html>
