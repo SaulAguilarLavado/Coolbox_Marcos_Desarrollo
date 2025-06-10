@@ -15,7 +15,6 @@ public class Conexion {
     
     @Value("${spring.datasource.username}")
     private String user;
-    
     @Value("${spring.datasource.password}")
     private String password;
     
