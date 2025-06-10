@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.coolbox.model.Usuario;
-import com.coolbox.repository.UsuarioRepository;
+import com.coolbox.service.UsuarioService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 public class AuthController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
 
     @PostMapping("/login")
     public String login(
@@ -24,9 +24,8 @@ public class AuthController {
             HttpSession session,
             RedirectAttributes redirectAttributes) {
         
-        Usuario usuario = usuarioRepository.findByUsername(username);
-        
-        if (usuario != null && usuario.getPassword().equals(password)) {
+        if (usuarioService.validateLogin(username, password)) {
+            Usuario usuario = usuarioService.getUsuarioByUsername(username);
             session.setAttribute("usuario", usuario);
             redirectAttributes.addFlashAttribute("success", "Bienvenido " + usuario.getNombre());
             return "redirect:/";
