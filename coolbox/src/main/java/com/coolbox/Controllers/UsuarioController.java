@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.coolbox.model.Usuario;
-import com.coolbox.repository.UsuarioRepository;
+import com.coolbox.service.UsuarioService;
 
 @Controller
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
 
     @PostMapping("/registro")
     public String registrarUsuario(
@@ -27,12 +27,6 @@ public class UsuarioController {
             RedirectAttributes redirectAttributes) {
         
         try {
-            // Verificar si el usuario ya existe
-            if (usuarioRepository.findByUsername(username) != null) {
-                redirectAttributes.addFlashAttribute("error", "El nombre de usuario ya está en uso");
-                return "redirect:/";
-            }
-
             // Crear nuevo usuario
             Usuario usuario = new Usuario();
             usuario.setUsername(username);
@@ -43,12 +37,12 @@ public class UsuarioController {
             usuario.setDistrito(distrito);
             usuario.setCodigoPostal(codigoPostal);
 
-            // Guardar usuario
-            usuarioRepository.save(usuario);
+            // Guardar usuario usando el servicio
+            usuarioService.saveUsuario(usuario);
             
             redirectAttributes.addFlashAttribute("success", "Usuario registrado exitosamente");
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "Error al registrar usuario: " + e.getMessage());
+        } catch (RuntimeException e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
         }
 
         return "redirect:/";

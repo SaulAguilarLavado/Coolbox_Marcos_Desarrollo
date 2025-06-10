@@ -29,8 +29,8 @@
                     <i class="bi bi-globe"></i> <span th:text="${#locale.language == 'en' ? 'English' : 'Español'}">Español</span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <li><a class="dropdown-item" th:href="@{/general/sugerencias(lang='es')}">Español</a></li>
-                    <li><a class="dropdown-item" th:href="@{/general/sugerencias(lang='en')}">English</a></li>
+                    <li><a class="dropdown-item" th:href="@{/general/reclamaciones(lang='es')}">Español</a></li>
+                    <li><a class="dropdown-item" th:href="@{/general/reclamaciones(lang='en')}">English</a></li>
                 </ul>
             </div>
                 <!-- Mostrar nombre de usuario si está autenticado -->
