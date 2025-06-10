@@ -43,7 +43,7 @@ public class UsuarioService {
                     }
                     
                     usuario.setUsername(usuarioDetails.getUsername());
-                    usuario.setPassword(usuarioDetails.getPassword()); // En producción, esto debería estar encriptado
+                    usuario.setPassword(usuarioDetails.getPassword());
                     usuario.setNombre(usuarioDetails.getNombre());
                     usuario.setApellido(usuarioDetails.getApellido());
                     usuario.setCiudad(usuarioDetails.getCiudad());
