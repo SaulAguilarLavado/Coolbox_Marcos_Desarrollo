@@ -21,7 +21,7 @@ public class Conexion {
     
     private Connection conexion = null;
     
-    @PostConstruct
+    @PostConstruct //Inicializa la conexión cuando se inicia la aplicación
     public void inicializarConexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,7 +48,7 @@ public class Conexion {
         return conexion;
     }
     
-    @PreDestroy
+    @PreDestroy //Cierra la conexión cuando se detiene la aplicación
     public void cerrarConexion() {
         if (conexion != null) {
             try {
