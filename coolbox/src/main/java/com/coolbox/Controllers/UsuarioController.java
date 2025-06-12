@@ -30,7 +30,7 @@ public class UsuarioController {
             // Crear nuevo usuario
             Usuario usuario = new Usuario();
             usuario.setUsername(username);
-            usuario.setPassword(password); // En producción, esto debería estar encriptado
+            usuario.setPassword(password);
             usuario.setNombre(nombre);
             usuario.setApellido(apellido);
             usuario.setCiudad(ciudad);
