@@ -1,4 +1,4 @@
-let tipoActual = 'sugerencias'; // o 'reclamaciones'
+let tipoActual = 'sugerencias';
 let editModal;
 
 // Cargar datos al iniciar
