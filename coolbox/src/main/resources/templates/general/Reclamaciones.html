@@ -24,25 +24,19 @@
                 Coolbox
             </a>
             <div class="d-flex align-items-center">
-              <div class="dropdown me-3">
-                <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-globe"></i> <span th:text="${#locale.language == 'en' ? 'English' : 'Español'}">Español</span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <li><a class="dropdown-item" th:href="@{/general/reclamaciones(lang='es')}">Español</a></li>
-                    <li><a class="dropdown-item" th:href="@{/general/reclamaciones(lang='en')}">English</a></li>
-                </ul>
-            </div>
                 <!-- Mostrar nombre de usuario si está autenticado -->
-                <div th:if="${session.usuario}" class="me-3">
-                    <span class="text-white">Bienvenido, <span th:text="${session.usuario.nombre}"></span></span>
+                <div sec:authorize="isAuthenticated()" class="me-3">
+                    <span class="text-white">
+                        <!-- USAR ${session.usuario.nombre} en lugar de sec:authentication -->
+                        Bienvenido, <span th:text="${session.usuario != null ? session.usuario.nombre : 'Usuario'}"></span>
+                    </span>
                     <form action="/logout" method="POST" class="d-inline">
                         <button type="submit" class="btn btn-outline-light btn-sm ms-2">Cerrar Sesión</button>
                     </form>
                 </div>
                 
-                <!-- Botones de login/registro si no está autenticado -->
-                <div th:unless="${session.usuario}">
+                <!-- Botones de login/registro si NO está autenticado -->
+                <div sec:authorize="!isAuthenticated()">
                     <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
                         <i class="bi bi-box-arrow-in-right"></i> Login
                     </button>
@@ -53,88 +47,25 @@
             </div>
         </div>
     </nav>
-
-    <!-- Modal de Login -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="/login" method="POST">
-                        <div class="mb-3">
-                            <label for="loginUsername" class="form-label">Nombre de Usuario</label>
-                            <input type="text" class="form-control" id="loginUsername" name="username" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="loginPassword" name="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-danger">Iniciar Sesión</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Registro -->
-    <div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signinModalLabel">Registro de Usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="/registro" method="POST">
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Nombre de Usuario</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="apellido" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" name="apellido" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="ciudad" class="form-label">Ciudad</label>
-                            <select class="form-select" id="ciudad" name="ciudad" required>
-                                <option value="">Seleccione una ciudad</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="distrito" class="form-label">Distrito</label>
-                            <select class="form-select" id="distrito" name="distrito" required>
-                                <option value="">Seleccione un distrito</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="codigoPostal" class="form-label">Código Postal</label>
-                            <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required>
-                        </div>
-                        <button type="submit" class="btn btn-danger">Registrarse</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+      <!-- Modales de autenticación -->
+    <div th:replace="fragments/auth-modals :: loginModal"></div>
+    <div th:replace="fragments/auth-modals :: registerModal"></div>
 
     <!-- Mensajes de éxito/error -->
-    <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
-        <span th:text="${success}"></span>
+    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>¡Sesión iniciada correctamente!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
-        <span th:text="${error}"></span>
+    <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <span>Error en las credenciales. Inténtalo de nuevo.</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${param.expired}" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span>Tu sesión ha expirado por inactividad (1 minuto). Por favor, inicia sesión nuevamente.</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${param.logout}" class="alert alert-info alert-dismissible fade show" role="alert">
+        <span>Has cerrado sesión correctamente.</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   </header>
@@ -278,5 +209,6 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
     <script th:src="@{/js/ubicacion.js}"></script>
+    <script th:src="@{/js/session-timeout.js}"></script>
 </body>
 </html>

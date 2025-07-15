@@ -1,44 +1,52 @@
 package com.coolbox.Controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.coolbox.model.Usuario;
 import com.coolbox.service.UsuarioService;
-
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AuthController {
-
+    
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping("/login")
-    public String login(
-            @RequestParam String username,
-            @RequestParam String password,
-            HttpSession session,
-            RedirectAttributes redirectAttributes) {
-        
-        if (usuarioService.validateLogin(username, password)) {
-            Usuario usuario = usuarioService.getUsuarioByUsername(username);
-            session.setAttribute("usuario", usuario);
-            redirectAttributes.addFlashAttribute("success", "Bienvenido " + usuario.getNombre());
-            return "redirect:/";
-        } else {
-            redirectAttributes.addFlashAttribute("error", "Usuario o contraseña incorrectos");
-            return "redirect:/";
+    // Solo manejar el registro desde los modales, NO login
+    @PostMapping("/registro")
+    public String registro(@RequestParam String username,
+                          @RequestParam String password,
+                          @RequestParam String nombre,
+                          @RequestParam String apellido,
+                          @RequestParam String ciudad,
+                          @RequestParam String distrito,
+                          @RequestParam String codigoPostal,
+                          HttpSession session,
+                          Model model) {
+        try {
+            Usuario nuevoUsuario = usuarioService.registrarUsuario(username, password, nombre, apellido, ciudad, distrito, codigoPostal);
+            
+            // Auto-login después del registro
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(username, password)
+            );
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            
+            // Guardar en sesión para que funcione ${session.usuario}
+            session.setAttribute("usuario", nuevoUsuario);
+            
+            return "redirect:/?success=true";
+        } catch (Exception e) {
+            return "redirect:/?error=true&message=" + e.getMessage();
         }
     }
-
-    @PostMapping("/logout")
-    public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
-        session.invalidate();
-        redirectAttributes.addFlashAttribute("success", "Sesión cerrada correctamente");
-        return "redirect:/";
-    }
-} 
+}
