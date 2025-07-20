@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Reclamaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Fuentes de Letras -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Estilo de la Página -->
+    <link rel="stylesheet" th:href="@{/style/styles.css}">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/img/logoCoolbox.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                Coolbox
+            </a>
+            <div class="d-flex align-items-center">
+                <!-- Mostrar nombre de usuario si está autenticado -->
+                <div sec:authorize="isAuthenticated()" class="me-3">
+                    <span class="text-white">
+                        <!-- USAR ${session.usuario.nombre} en lugar de sec:authentication -->
+                        Bienvenido, <span th:text="${session.usuario != null ? session.usuario.nombre : 'Usuario'}"></span>
+                    </span>
+                    <form action="/logout" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-outline-light btn-sm ms-2">Cerrar Sesión</button>
+                    </form>
+                </div>
+                
+                <!-- Botones de login/registro si NO está autenticado -->
+                <div sec:authorize="!isAuthenticated()">
+                    <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signinModal">
+                        <i class="bi bi-arrow-bar-right"></i> Sign in
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+      <!-- Modales de autenticación -->
+    <div th:replace="fragments/auth-modals :: loginModal"></div>
+    <div th:replace="fragments/auth-modals :: registerModal"></div>
+
+    <!-- Mensajes de éxito/error -->
+    <div th:if="${param.success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>¡Sesión iniciada correctamente!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <span>Error en las credenciales. Inténtalo de nuevo.</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${param.expired}" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span>Tu sesión ha expirado por inactividad (1 minuto). Por favor, inicia sesión nuevamente.</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${param.logout}" class="alert alert-info alert-dismissible fade show" role="alert">
+        <span>Has cerrado sesión correctamente.</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </header>
+  <div class="principal">
+    <nav class="navbar navbar-expand-md navbar-expand-sm navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand" th:href="@{/}">Coolbox</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://www.instagram.com/coolboxpe/">Redes sociales</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Menu
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" th:href="@{/categorias/audio}">Audio</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/celulares}">Celulares y accesorios</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/computo}">Computo</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/fotografia}">Fotografia</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/gaming}">Gaming</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/movilidad}">Movilidad</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/tv}">TV y video</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/pilas}">Pilas y cargadores</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/oficina}">Oficina</a></li>
+                  <li><a class="dropdown-item" th:href="@{/categorias/smartHome}">Smart Home</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-dark" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+  </div>
+  <main class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+            <section class="bg-light p-4 p-md-5 rounded shadow-sm">
+                <form th:action="@{/general/reclamaciones}" method="post">
+                    <h2 class="text-center mb-4 text-dark" th:text="#{formulario.reclamaciones}">Formulario de Reclamaciones</h2>
+                
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label" th:text="#{formulario.nombre}">Nombre Completo</label>
+                        <input type="text" id="nombre" name="name" class="form-control" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="dni" class="form-label" th:text="#{formulario.dni}">DNI</label>
+                        <input type="text" id="dni" name="dni" class="form-control" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label" th:text="#{formulario.categoria}">Categoría</label>
+                        <select id="categoria" name="categoria" class="form-select" required>
+                            <option value="" disabled selected th:text="#{seleccion.categoria}"></option>
+                            <option value="producto" th:text="#{categoria.producto}"></option>
+                            <option value="servicio" th:text="#{categoria.servicio}"></option>
+                            <option value="soporte" th:text="#{categoria.soporte}"></option>
+                            <option value="otro" th:text="#{categoria.otro}"></option>
+                        </select>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="reclamacion" class="form-label" th:text="#{formulario.descripcion}">Descripción de la Reclamación</label>
+                        <textarea id="reclamacion" name="complaint" rows="4" class="form-control" required></textarea>
+                    </div>
+                
+                    <div class="d-grid">
+                        <button type="submit" class="btn text-white" style="background-color: #ff3300;" th:text="#{formulario.enviar}">Enviar Reclamación</button>
+                    </div>
+                </form>
+                <p th:if="${message}" th:text="${message}" class="text-success mt-3"></p>
+            </section>
+        </div>
+    </div>
+  </main>
+
+    <!-- Footer -->
+    <footer class="info-general text-white p-4 text-center fs-6">
+        <div class="container">
+            <div class="row justify-content-center text-start gy-4 gx-5">
+                <!-- Información de Contacto -->
+                <div class="col-lg-4 mx-auto">
+                    <h5 class="text-uppercase text-center fw-bold">Información de Contacto</h5>
+                    <ul class="list-unstyled sm">
+                        <li>Ubicación:</li>
+                        <li>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.4918464373986!2d-77.0705636!3d-11.940410400000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d1c56aba1e6f%3A0x5e192b182ece4826!2sReal%20Plaza%20Pro!5e0!3m2!1ses!2spe!4v1744491614856!5m2!1ses!2spe"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </li>
+                        <li class="mt-2">Teléfono: +01 712 - 43212</li>
+                        <li>Email: servicioalcliente@rashperu.com</li>
+                    </ul>
+                </div>
+
+                <!-- Información General -->
+                <div class="col-lg-3 mx-auto">
+                    <h5 class="text-uppercase text-center fw-bold">Información</h5>
+                    <ul class="list-unstyled sm text-center">
+                        <li><a th:href="@{/general/acerca}" class="text-white text-decoration-none d-block mb-1">Acerca de Nosotros</a></li>
+                        <li><a th:href="@{/general/politicas}" class="text-white text-decoration-none d-block mb-1">Políticas de Privacidad</a></li>
+                        <li><a th:href="@{/general/terminos}" class="text-white text-decoration-none d-block mb-1">Términos y Condiciones</a></li>
+                        <li><a th:href="@{/general/reembolsos}" class="text-white text-decoration-none d-block mb-1">Reembolsos y Devoluciones</a></li>
+                    </ul>
+                </div>
+
+                <!-- Formularios -->
+                <div class="col-lg-4 mx-auto">
+                    <h5 class="text-uppercase text-center fw-bold">Formularios</h5>
+                    <ul class="list-unstyled sm">
+                        <li class="fs-6">
+                            <a th:href="@{/general/sugerencias}" class="text-white text-decoration-none d-block mb-1 text-center">
+                                Sugerencias <i class="bi bi-chat-left-dots-fill"></i>
+                            </a>
+                        </li>
+                        <li class="fs-6">
+                            <a th:href="@{/general/reclamaciones}" class="text-white text-decoration-none d-block mb-1 text-center">
+                                Reclamaciones <i class="bi bi-book-fill"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <footer class="bg-dark text-white text-center p-2">
+        <div class="container">
+            <p class="mb-0">© 2025 Coolbox. Proyecto Marcos de Desarrollo Web</p>
+        </div>  
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script th:src="@{/js/ubicacion.js}"></script>
+    <script th:src="@{/js/session-timeout.js}"></script>
+</body>
+</html>
