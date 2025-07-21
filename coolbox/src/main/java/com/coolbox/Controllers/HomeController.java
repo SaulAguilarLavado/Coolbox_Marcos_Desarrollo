@@ -80,4 +80,10 @@ public class HomeController {
     public String reembolsos() {
         return "general/reembolsos"; // Carga templates/general/reembolsos.html
     }
+    
+    // Redireccionar /trabajador a /trabajador/login
+    @GetMapping("/trabajador")
+    public String trabajadorRedirect() {
+        return "redirect:/trabajador/login";
+    }
 }

@@ -82,6 +82,9 @@ public class SecurityConfig {
                 // Rutas de administración - PERMITIR TODAS (el AdminController maneja la seguridad)
                 .requestMatchers("/admin", "/admin/**").permitAll()
                 
+                // Rutas de trabajador - PERMITIR TODAS (el TrabajadorController maneja la seguridad con sesiones)
+                .requestMatchers("/trabajador", "/trabajador/**").permitAll()
+                
                 // API de administración - PERMITIR ACCESO (dashboard las necesita)
                 .requestMatchers("/api/sugerencias/**", "/api/reclamaciones/**").permitAll()
                 

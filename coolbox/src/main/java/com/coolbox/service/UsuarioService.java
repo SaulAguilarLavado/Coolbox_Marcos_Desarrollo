@@ -173,5 +173,119 @@ public class UsuarioService {
         if (!rolRepository.existsByNombre(NombreRol.ROLE_ADMIN)) {
             rolRepository.save(new Rol(NombreRol.ROLE_ADMIN));
         }
+        if (!rolRepository.existsByNombre(NombreRol.ROLE_TRABAJADOR)) {
+            rolRepository.save(new Rol(NombreRol.ROLE_TRABAJADOR));
+        }
+    }
+
+    // Métodos para gestión de trabajadores
+    public Usuario crearTrabajador(String username, String nombre, String password) {
+        // Verificar si el usuario ya existe
+        if (usuarioRepository.existsByEmail(username)) {
+            throw new RuntimeException("El email ya está registrado");
+        }
+        if (usuarioRepository.existsByUsername(username)) {
+            throw new RuntimeException("El nombre de usuario ya está en uso");
+        }
+        
+        // Crear nuevo trabajador
+        Usuario trabajador = new Usuario();
+        trabajador.setEmail(username);
+        trabajador.setUsername(username);
+        trabajador.setNombre(nombre);
+        trabajador.setPassword(passwordEncoder.encode(password));
+        trabajador.setActivo(true);
+        trabajador.setFechaCreacion(LocalDateTime.now());
+        
+        // Asignar rol de trabajador
+        Set<Rol> roles = new HashSet<>();
+        Rol rolTrabajador = rolRepository.findByNombre(NombreRol.ROLE_TRABAJADOR)
+                .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
+        roles.add(rolTrabajador);
+        trabajador.setRoles(roles);
+        
+        return usuarioRepository.save(trabajador);
+    }
+
+    public java.util.List<Usuario> obtenerTodosTrabajadores() {
+        return usuarioRepository.findAll().stream()
+                .filter(usuario -> usuario.getRoles().stream()
+                        .anyMatch(rol -> rol.getNombre() == NombreRol.ROLE_TRABAJADOR))
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+    public java.util.List<Usuario> obtenerTodosUsuarios() {
+        return usuarioRepository.findAll().stream()
+                .filter(usuario -> usuario.getRoles().stream()
+                        .anyMatch(rol -> rol.getNombre() == NombreRol.ROLE_USUARIO))
+                .collect(java.util.stream.Collectors.toList());
+    }
+
+    public Usuario actualizarTrabajador(Long id, String username, String nombre, String password) {
+        Usuario trabajador = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Trabajador no encontrado"));
+        
+        // Verificar que sea un trabajador
+        boolean esTrabajador = trabajador.getRoles().stream()
+                .anyMatch(rol -> rol.getNombre() == NombreRol.ROLE_TRABAJADOR);
+        if (!esTrabajador) {
+            throw new RuntimeException("El usuario no es un trabajador");
+        }
+        
+        // Actualizar datos
+        if (!trabajador.getUsername().equals(username)) {
+            if (usuarioRepository.existsByUsername(username)) {
+                throw new RuntimeException("El nombre de usuario ya está en uso");
+            }
+            trabajador.setUsername(username);
+            trabajador.setEmail(username);
+        }
+        
+        trabajador.setNombre(nombre);
+        if (password != null && !password.trim().isEmpty()) {
+            trabajador.setPassword(passwordEncoder.encode(password));
+        }
+        
+        return usuarioRepository.save(trabajador);
+    }
+
+    public void eliminarTrabajador(Long id) {
+        Usuario trabajador = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Trabajador no encontrado"));
+        
+        // Verificar que sea un trabajador
+        boolean esTrabajador = trabajador.getRoles().stream()
+                .anyMatch(rol -> rol.getNombre() == NombreRol.ROLE_TRABAJADOR);
+        if (!esTrabajador) {
+            throw new RuntimeException("El usuario no es un trabajador");
+        }
+        
+        usuarioRepository.delete(trabajador);
+    }
+
+    public Optional<Usuario> obtenerTrabajadorPorId(Long id) {
+        return usuarioRepository.findById(id).filter(usuario -> 
+                usuario.getRoles().stream()
+                        .anyMatch(rol -> rol.getNombre() == NombreRol.ROLE_TRABAJADOR));
+    }
+
+    // Método para autenticar trabajadores
+    public Usuario autenticarTrabajador(String username, String password) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByUsernameAndActivo(username, true);
+        
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            
+            // Verificar que sea un trabajador
+            boolean esTrabajador = usuario.getRoles().stream()
+                    .anyMatch(rol -> rol.getNombre() == NombreRol.ROLE_TRABAJADOR);
+            
+            // Verificar contraseña y que sea trabajador
+            if (esTrabajador && passwordEncoder.matches(password, usuario.getPassword())) {
+                return usuario;
+            }
+        }
+        
+        return null;
     }
 }
