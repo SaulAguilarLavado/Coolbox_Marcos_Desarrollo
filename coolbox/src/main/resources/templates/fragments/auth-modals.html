@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- Modal de Login -->
+    <div th:fragment="loginModal" class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <span th:text="${error}"></span>
+                    </div>
+                    <form action="/login" method="POST">
+                        <div class="mb-3">
+                            <label for="loginUsername" class="form-label">Email o Usuario</label>
+                            <input type="text" class="form-control" id="loginUsername" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div th:fragment="registerModal" class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signinModalLabel">Registro de Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <span th:text="${error}"></span>
+                    </div>
+                    <form action="/registro" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nombre de Usuario</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ciudad" class="form-label">Ciudad</label>
+                            <select class="form-select" id="ciudad" name="ciudad" required>
+                                <option value="">Seleccione una ciudad</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="distrito" class="form-label">Distrito</label>
+                            <select class="form-select" id="distrito" name="distrito" required>
+                                <option value="">Seleccione un distrito</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigoPostal" class="form-label">Código Postal</label>
+                            <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/session-timeout.js}"></script>
+</body>
+</html>

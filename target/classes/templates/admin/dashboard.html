@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Coolbox</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Coolbox Admin</a>
+            <div class="ms-auto">
+                <a href="/admin/logout" class="btn btn-outline-light">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <span th:text="${success}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <h2>Panel de Administración</h2>
+        
+        <!-- Pestañas -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="sugerencias-tab" data-bs-toggle="tab" data-bs-target="#sugerencias" type="button" role="tab">Sugerencias</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reclamaciones-tab" data-bs-toggle="tab" data-bs-target="#reclamaciones" type="button" role="tab">Reclamaciones</button>
+            </li>
+        </ul>
+
+        <!-- Contenido de las pestañas -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Sugerencias -->
+            <div class="tab-pane fade show active" id="sugerencias" role="tabpanel">
+                <div class="mt-3">
+                    <h3>Sugerencias</h3>
+                    
+                    <!-- Búsqueda por ID -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="sugerenciaId" placeholder="ID de la sugerencia">
+                                <button class="btn btn-primary" onclick="buscarSugerenciaPorId()">Buscar por ID</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-success" onclick="cargarDatos('sugerencias')">Ver todas las sugerencias</button>
+                        </div>
+                    </div>
+
+                    <!-- Resultado de búsqueda individual -->
+                    <div id="sugerenciaIndividual" class="card mb-3 d-none">
+                        <div class="card-body">
+                            <h5 class="card-title">Detalles de la Sugerencia</h5>
+                            <div id="sugerenciaDetalles"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de sugerencias -->
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>DNI</th>
+                                    <th>Categoría</th>
+                                    <th>Sugerencia</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sugerenciasTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reclamaciones -->
+            <div class="tab-pane fade" id="reclamaciones" role="tabpanel">
+                <div class="mt-3">
+                    <h3>Reclamaciones</h3>
+                    
+                    <!-- Búsqueda por ID -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="reclamacionId" placeholder="ID de la reclamación">
+                                <button class="btn btn-primary" onclick="buscarReclamacionPorId()">Buscar por ID</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-success" onclick="cargarDatos('reclamaciones')">Ver todas las reclamaciones</button>
+                        </div>
+                    </div>
+
+                    <!-- Resultado de búsqueda individual -->
+                    <div id="reclamacionIndividual" class="card mb-3 d-none">
+                        <div class="card-body">
+                            <h5 class="card-title">Detalles de la Reclamación</h5>
+                            <div id="reclamacionDetalles"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de reclamaciones -->
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>DNI</th>
+                                    <th>Categoría</th>
+                                    <th>Reclamación</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reclamacionesTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editId">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="editName">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="editDni">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Categoría</label>
+                            <select class="form-select" id="editCategoria">
+                                <option value="producto">Producto</option>
+                                <option value="servicio">Servicio</option>
+                                <option value="soporte">Soporte Técnico</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" id="editDescripcion" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardarCambios()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/dashboard.js}"></script>
+</body>
+</html> 

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Coolbox</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Coolbox Admin</a>
+            <div class="ms-auto">
+                <a href="/admin/logout" class="btn btn-outline-light">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <span th:text="${success}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span th:text="${error}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        <h2>Panel de Administración</h2>
+        
+        <!-- Pestañas -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab">Usuarios</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="trabajadores-tab" data-bs-toggle="tab" data-bs-target="#trabajadores" type="button" role="tab">Trabajadores</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="sugerencias-tab" data-bs-toggle="tab" data-bs-target="#sugerencias" type="button" role="tab">Sugerencias</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reclamaciones-tab" data-bs-toggle="tab" data-bs-target="#reclamaciones" type="button" role="tab">Reclamaciones</button>
+            </li>
+        </ul>
+
+        <!-- Contenido de las pestañas -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Usuarios Registrados -->
+            <div class="tab-pane fade show active" id="usuarios" role="tabpanel">
+                <div class="mt-3">
+                    <h3>Usuarios Registrados</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Email</th>
+                                    <th>Nombre</th>
+                                    <th>Ciudad</th>
+                                    <th>Distrito</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="usuario : ${usuarios}">
+                                    <td th:text="${usuario.id}">1</td>
+                                    <td th:text="${usuario.email}">usuario@email.com</td>
+                                    <td th:text="${usuario.nombre + ' ' + (usuario.apellido != null ? usuario.apellido : '')}">Juan Pérez</td>
+                                    <td th:text="${usuario.ciudad}">Lima</td>
+                                    <td th:text="${usuario.distrito}">Miraflores</td>
+                                    <td th:text="${#temporals.format(usuario.fechaCreacion, 'dd/MM/yyyy')}">01/01/2024</td>
+                                    <td>
+                                        <span th:class="${usuario.activo ? 'badge bg-success' : 'badge bg-danger'}" 
+                                              th:text="${usuario.activo ? 'Activo' : 'Inactivo'}">Activo</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trabajadores -->
+            <div class="tab-pane fade" id="trabajadores" role="tabpanel">
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3>Gestión de Trabajadores</h3>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearTrabajadorModal">
+                            Crear Trabajador
+                        </button>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Usuario</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha Creación</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="trabajador : ${trabajadores}">
+                                    <td th:text="${trabajador.id}">1</td>
+                                    <td th:text="${trabajador.username}">trabajador1</td>
+                                    <td th:text="${trabajador.nombre}">Trabajador</td>
+                                    <td th:text="${#temporals.format(trabajador.fechaCreacion, 'dd/MM/yyyy')}">01/01/2024</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-warning" 
+                                                th:data-id="${trabajador.id}"
+                                                th:data-username="${trabajador.username}"
+                                                th:data-nombre="${trabajador.nombre}"
+                                                onclick="editarTrabajador(this)">
+                                            Editar
+                                        </button>
+                                        <form th:action="@{/admin/trabajador/eliminar/{id}(id=${trabajador.id})}" method="post" style="display: inline;">
+                                            <button type="submit" class="btn btn-sm btn-danger" 
+                                                    onclick="return confirm('¿Está seguro de eliminar este trabajador?')">
+                                                Eliminar
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sugerencias -->
+            <div class="tab-pane fade" id="sugerencias" role="tabpanel">
+                <div class="mt-3">
+                    <h3>Sugerencias</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>DNI</th>
+                                    <th>Categoría</th>
+                                    <th>Fecha</th>
+                                    <th>Sugerencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="sugerencia : ${sugerencias}">
+                                    <td th:text="${sugerencia.id}">1</td>
+                                    <td th:text="${sugerencia.name}">Juan</td>
+                                    <td th:text="${sugerencia.dni}">12345678</td>
+                                    <td th:text="${sugerencia.categoria}">General</td>
+                                    <td th:text="${#temporals.format(sugerencia.fechaCreacion, 'dd/MM/yyyy')}">01/01/2024</td>
+                                    <td th:text="${sugerencia.suggestion}">Sugerencia...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reclamaciones -->
+            <div class="tab-pane fade" id="reclamaciones" role="tabpanel">
+                <div class="mt-3">
+                    <h3>Reclamaciones</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>DNI</th>
+                                    <th>Categoría</th>
+                                    <th>Fecha</th>
+                                    <th>Reclamación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="reclamacion : ${reclamaciones}">
+                                    <td th:text="${reclamacion.id}">1</td>
+                                    <td th:text="${reclamacion.name}">Juan</td>
+                                    <td th:text="${reclamacion.dni}">12345678</td>
+                                    <td th:text="${reclamacion.categoria}">Producto</td>
+                                    <td th:text="${#temporals.format(reclamacion.fechaCreacion, 'dd/MM/yyyy')}">01/01/2024</td>
+                                    <td th:text="${reclamacion.complaint}">Reclamación...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear trabajador -->
+    <div class="modal fade" id="crearTrabajadorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Crear Trabajador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="/admin/trabajador/crear" method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuario:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar trabajador -->
+    <div class="modal fade" id="editarTrabajadorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Trabajador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="editarTrabajadorForm" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" id="editId" name="id">
+                        <div class="mb-3">
+                            <label for="editUsername" class="form-label">Usuario:</label>
+                            <input type="text" class="form-control" id="editUsername" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editNombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="editNombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPassword" class="form-label">Nueva Contraseña (dejar vacío para mantener):</label>
+                            <input type="password" class="form-control" id="editPassword" name="password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function editarTrabajador(button) {
+            const id = button.dataset.id;
+            const username = button.dataset.username;
+            const nombre = button.dataset.nombre;
+            
+            document.getElementById('editId').value = id;
+            document.getElementById('editUsername').value = username;
+            document.getElementById('editNombre').value = nombre;
+            document.getElementById('editPassword').value = '';
+            document.getElementById('editarTrabajadorForm').action = '/admin/trabajador/actualizar/' + id;
+            
+            new bootstrap.Modal(document.getElementById('editarTrabajadorModal')).show();
+        }
+    </script>
+</body>
+</html>
